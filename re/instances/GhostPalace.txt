@@ -44,20 +44,20 @@ dali02,43,129,5	script	Unpleasant Royal Guard#	4_M_SAKRAYROYAL,{
 	mes "La princesa desapareció en medio de la batalla, mientras yo vigilaba el palacio.";
 	next;
 	mes "[Unpleasant Royal Guard]";
-	mes "You run ahead and I will catch up. We must save her.";
+	mes "Toma la delantera, estaré cubriendo tus espaldas. Debemos salvarla";
 	next;
-	if (select( "Voy a ayudar.", "No es un buen momento." ) == 2) {
+	if (select( "Ayudar.", "No es un buen momento." ) == 2) {
 		mes "[Unpleasant Royal Guard]";
-		mes "Even now all the royal guards are fighting and dying from the monsters.";
+		mes "Incluso ahora todos los guardias reales están luchando y siendo aniquilados por esos monstruos.";
 		next;
 		mes "[Unpleasant Royal Guard]";
-		mes "We must, no matter how much fear grips our hearts, save the princess!";
+		mes "Debemos, no importa cuánto miedo se apodera de nuestros corazones, salvar a la princesa!";
 		close;
 	}
 	instance_create("Ghost Palace");
 	mes "[Unpleasant Royal Guard]";
 	mes "Gracias..";
-	mes "IAbriré el pasaje secreto al ^0000ffGhost Palace^000000.";
+	mes "Abriré el pasaje secreto al ^0000ffGhost Palace^000000.";
 	mes "¡Prepárate!";
 	close;
 }
@@ -76,10 +76,10 @@ dali02,40,134,5	script	Interdimensional Device#dk	PORTAL,{
 	next;
 	if (select( "Entrar", "Un momento" ) == 2) {
 		mes "[Unpleasant Royal Guard]";
-		mes "Even now all the royal guards are fighting and dying from the monsters.";
+		mes "Incluso ahora todos los guardias reales están luchando y muriendo por los monstruos";
 		next;
 		mes "[Unpleasant Royal Guard]";
-		mes "We must, no matter how much fear grips our hearts, save the princess!";
+		mes "Debemos, no importa cuánto miedo se apodera de nuestros corazones, salvar a la princesa!";
 		close;
 	}
 	switch( checkquest(1261,PLAYTIME) ) {
@@ -94,7 +94,7 @@ dali02,40,134,5	script	Interdimensional Device#dk	PORTAL,{
 		mes "Intentemos volver a ingresar.";
 		close;
 	case 2:
-		mes "^0000ffThe time limit for entering to the Curse of the Swordsman is finished. Please try to talk to the Unpleasent Royal Guard again..^000000";
+		mes "^0000ffEl límite de tiempo para ingresar a la Maldición del espadachín ha terminado. Intenta hablar con Unpleasent Royal Guard  nuevamente.^000000";
 		erasequest 1261;// Cursed Swordman
 		close;
 	}
@@ -108,16 +108,16 @@ dali02,40,134,5	script	Interdimensional Device#dk	PORTAL,{
 	.@md_name$ = "Ghost Palace";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "An unknown error occurred.";
+		mes "Ha ocurrido un error desconocido. Favor informar al Staff...";
 		close;
 	case IE_NOINSTANCE:
-		mes "^ff0000Inside the devices you see a dark hole. If you wish to enter you must to talk to the Unpleasent Royal Guard first.^000000";
+		mes "^ff0000Dentro de los dispositivos, ves un agujero oscuro. Si deseas ingresar debes hablar primero con Unpleasent Royal Guard first..^000000";
 		close;
 	case IE_NOMEMBER:
-		mes "Only registered members can enter the " + .@md_name$ + " instance.";
+		mes "Solo miembros registrados pueden ingresar a la instancia" + .@md_name$ + ".";
 		close;
 	case IE_OK:
-		mapannounce "dali", "" + strcharinfo(0) + " of the party, " + getpartyname(.@party_id) + ", is entering the Ghost Palace.", bc_map, 0x00ff99;
+		mapannounce "dali", "" + strcharinfo(0) + " del grupo " + getpartyname(.@party_id) + ", han entrado a la instancia Ghost Palace.", bc_map, 0x00ff99;
 		// warp "1@spa",42,196;
 		setquest 1261;// Cursed Swordman
 		end;
@@ -127,24 +127,24 @@ dali02,40,134,5	script	Interdimensional Device#dk	PORTAL,{
 // 1st floor
 1@spa,41,204,5	script	King#dk	4_M_RUSKING,{
 	mes "[King]";
-	mes "You are hereby appointed as the personal guard to Princess Tiara. I trust your loyalty above all else.";
-	npctalk "King: You are hereby appointed as the personal guard to Princess Tiara. I trust your loyalty above all else.";
+	mes "Por la presente eres designado como el guardián personal de la princesa Tiara. Confío en tu lealtad por encima de todo";
+	npctalk "Rey: Por la presente eres designado como el guardián personal de la Princesa Tiara. Confío en tu lealtad por encima de todo";
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "I will protect the princess with my life.";
-	npctalk "Lurid Royal Guard: I will protect the princess with my life.", instance_npcname("Lurid Royal Guard#dk");
+	mes "Protegeré a la princesa con mi vida";
+	npctalk "Lurid Royal Guard: Protegeré a la princesa con mi vida"., instance_npcname("Lurid Royal Guard#dk");
 	next;
 	mes "[King]";
-	mes "The marriage arrangements are going as planned. The prince is here to meet with the princess.";
-	npctalk "King: The marriage arrangements are going as planned. The prince is here to meet with the princess.";
+	mes "Los arreglos matrimoniales van según lo planeado. El príncipe está aquí para encontrarse con la princesa";
+	npctalk "King: los arreglos matrimoniales van según lo planeado. El príncipe está aquí para reunirse con la princesa";
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "...Yes, your majesty.";
-	npctalk "Lurid Royal Guard: ...Yes, your majesty.", instance_npcname("Lurid Royal Guard#dk");
+	mes "... Sí, su majestad";
+	npctalk "Lurid Royal Guard: ... Sí, majestad"., instance_npcname("Lurid Royal Guard#dk");
 	next;
 	mes "[King]";
-	mes "My gods, there are monsters in the castle! Get rid of them now!";
-	npctalk "King: My gods, there are monsters in the castle! Get rid of them now!";
+	mes "¡Dios mío, hay monstruos en el castillo! ¡Deshazte de ellos ahora!";
+	npctalk "Rey: ¡Dios mío, hay monstruos en el castillo! ¡Deshazte de ellos ahora!";
 	close2;
 	donpcevent instance_npcname("#gp_control_1") + "::OnStart";
 	end;
@@ -265,41 +265,41 @@ OnMyMobDead3:
 	.@tiara$ = instance_npcname("Princess Tiara#dk");
 	cutin "npc-tiara.bmp",3;
 	mes "[Lurid Royal Guard]";
-	mes "Your highness, the King has invited a prince from a neighboring country to be your betrothed. Be ready to meet him...";
-	npctalk "Lurid Royal Guard: Your highness, the King has invited a prince from a neighboring country to be your betrothed. Be ready to meet him...";
+	mes "Su alteza, el Rey ha invitado a un príncipe de un país vecino a ser su prometido. Prepárese para conocerlo ...";
+	npctalk "Lúcida Guardia Real: Alteza, el Rey ha invitado a un príncipe de un país vecino a ser su prometido. Prepárese para conocerlo ...";
 	next;
 	mes "[Princess Tiara]";
-	mes "If...If a marriage is arranged what should I do?";
-	npctalk "Princess Tiara: If...If a marriage is arranged what should I do?", .@tiara$;
+	mes "Si ... Si se organiza un matrimonio, ¿qué debo hacer?";
+	npctalk "Princesa Tiara: Si ... Si se organiza un matrimonio, ¿qué debo hacer?", .@tiara$;
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "The only thing I can do is protect you from physical harm.";
-	npctalk "Lurid Royal Guard: The only thing I can do is protect you from physical harm.";
+	mes "Lo único que puedo hacer es protegerte del daño físico";
+	npctalk "Lurid Royal Guard: Lo único que puedo hacer es protegerte del daño físico";
 	next;
 	mes "[Princess Tiara]";
-	mes "Then, what can I do?";
-	npctalk "Princess Tiara: Then, what can I do?", .@tiara$;
+	mes "Entonces, ¿qué puedo hacer?";
+	npctalk "Princesa Tiara: Entonces, ¿qué puedo hacer?", .@tiara$;
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "You must decide that for yourself your highness...";
-	npctalk "Lurid Royal Guard: You must decide that for yourself your highness...";
+	mes "Usted debe decidir eso, su alteza ...";
+	npctalk "Lurid Royal Guard: Debes decidir eso por ti, alteza ...";
 	next;
 	mes "[Princess Tiara]";
-	mes "Would it be easier for you if I were married and sent off to another country?";
-	npctalk "Princess Tiara: Would it be easier for you if I were married and sent off to another country?", .@tiara$;
+	mes "¿Sería más fácil para ti si estuviera casado y enviado a otro país?";
+	npctalk "Princesa Tiara: ¿Sería más fácil para ti si estuviera casado y enviado a otro país?", .@tiara$;
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "I will always stand by you and protect you forever.";
-	npctalk "Lurid Royal Guard: I will always stand by you and protect you forever.";
+	mes "Siempre estaré a tu lado y te protegeré para siempre";
+	npctalk "Lurid Royal Guard: siempre estaré a tu lado y te protegeré para siempre";
 	cutin "npc-tiara.bmp",255;
 	next;
 	mes "[Princess Tiara]";
-	mes "Monsters have gotten inside the castle? Please, protect me!";
-	npctalk "Princess Tiara: Monsters have gotten inside the castle? Please, protect me!", .@tiara$;
+	mes "¿Los monstruos han entrado al castillo? ¡Por favor, protégeme!";
+	npctalk "Princesa Tiara: ¿Los monstruos han entrado al castillo? ¡Por favor, protégeme!", .@tiara$;
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "Stay behind me. Let's go!";
-	npctalk "Lurid Royal Guard: Stay behind me. Let's go!";
+	mes "Quédate detrás de mí. ¡Vamos!";
+	npctalk "Lurid Royal Guard: Quédate atrás de mí. ¡Vamos!";
 	close2;
 	donpcevent instance_npcname("#gp_control_2") + "::OnStart";
 	end;
@@ -365,20 +365,20 @@ OnMyMobDead3:
 // 3rd floor
 1@spa,32,54,1	script	King#dk1	4_M_RUSKING,{
 	mes "[King]";
-	mes "It was you who brought the monsters here! You want to get rid of me and have the princess for yourself?";
-	npctalk "King: It was you who brought the monsters here! You want to get rid of me and have the princess for yourself?";
+	mes "Fuiste tú quien trajo los monstruos aquí. ¿Quieres deshacerte de mí y tener a la princesa para ti?";
+	npctalk "Rey: ¡Fuiste tú quien trajo los monstruos aquí! ¿Quieres deshacerte de mí y tener a la princesa para ti?";
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "It is a trap your majesty! You must trust me!";
-	npctalk "Lurid Royal Guard: It is a trap your majesty! You must trust me!", instance_npcname("Lurid Royal Guard#dk2");
+	mes "¡Es una trampa tu majestad! ¡Debes confiar en mí!";
+	npctalk "Lurid Royal Guard: ¡es una trampa tu majestad! ¡Debes confiar en mí!", instance_npcname("Lurid Royal Guard#dk2");
 	next;
 	mes "[King]";
-	mes "Shut up! You've betrayed me! I trusted you... you must pay for your disgrace.";
-	npctalk "King: Shut up! You've betrayed me! I trusted you... you must pay for your disgrace.";
+	mes "Cállate! Me has traicionado! Confié en ti ... debes pagar por tu desgracia.";
+	npctalk "Rey: ¡Cállate! ¡Me has traicionado! Confié en ti ... debes pagar por tu deshonra";
 	next;
 	mes "[King]";
-	mes "You will suffer for the rest of your life.";
-	npctalk "King: You will suffer for the rest of your life.";
+	mes "sufrirás por el resto de tu vida";
+	npctalk "Rey: sufrirás por el resto de tu vida";
 	close2;
 	disablenpc instance_npcname("3rd floor in the palace");
 	disablenpc instance_npcname("King#dk1");
@@ -399,28 +399,28 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer5000:
-	npctalk "Ominous Voice: Oh, faithful royal guard, you are trapped.";
+	npctalk "Ominous Voice: Oh, fiel guardia real, estás atrapado";
 	end;
 OnTimer8000:
-	npctalk "Ominous Voice: The conspiracy in the palace has your princess in grave danger...";
+	npctalk "Ominous Voice: La conspiración en el palacio tiene a tu princesa en grave peligro ...";
 	end;
 OnTimer12000:
-	npctalk "Lurid Royal Guard: Who are you? Show yourself!", instance_npcname("Lurid Royal Guard#dk3");
+	npctalk "Lurid Royal Guard: ¿Quién eres? ¡Muéstrate!", instance_npcname ("Lurid Royal Guard # dk3");
 	end;
 OnTimer15000:
-	npctalk "Ominous Voice: Ah... so you do you hear me?";
+	npctalk "Ominous Voice: Ah ... ¿entonces me oyes?";
 	end;
 OnTimer20000:
-	npctalk "Lurid Royal Guard: ...?", instance_npcname("Lurid Royal Guard#dk3");
+	npctalk "Lurid Royal Guard: ...?", instance_npcname ("Lurid Royal Guard # dk3");
 	end;
 OnTimer23000:
-	npctalk "Ominous Voice: I can give you unlimited power. If you make a pact with me.";
+	npctalk "Ominous Voice: Te puedo dar un poder ilimitado. Si haces un pacto conmigo";
 	end;
 OnTimer28000:
-	npctalk "Lurid Royal Guard: I..I...", instance_npcname("Lurid Royal Guard#dk3");
-	end;
+	npctalk "Lurid Royal Guard: Y..Y ...", instance_npcname ("Lurid Royal Guard # dk3");
+end;
 OnTimer33000:
-	npctalk "Thanatos Magic Trace: Kukuku... What do you want boy?";
+	npctalk "Thanatos Magic Trace: Kukuku ... ¿Qué quieres chico?";
 	end;
 OnTimer34000:
 	stopnpctimer;
@@ -591,21 +591,21 @@ OnMyMobDead2:
 1@spa,199,214,1	script	Lurid Royal Guard#dk4	4_M_SAKRAYROYAL,{
 	.@prince$ = instance_npcname("Visiting Prince#dk");
 	mes "[Lurid Royal Guard]";
-	mes "Where is Princess Tiara?";
-	npctalk "Lurid Royal Guard: Where is Princess Tiara?";
+	mes "¿Dónde está la Princesa Tiara?";
+	npctalk "Lurid Royal Guard: ¿Dónde está Princess Tiara?";
 	next;
 	mes "[Visiting Prince]";
-	mes "You are too late... but you brought what I was looking for. Thanks for your help.";
-	npctalk "Visiting Prince: You are too late... but you brought what I was looking for. Thanks for your help.", .@prince$;
+	mes "Llegaste demasiado tarde ... pero trajiste lo que estaba buscando. Gracias por tu ayuda";
+	npctalk "Visiting Prince: Llegaste demasiado tarde ... pero trajiste lo que estaba buscando. Gracias por tu ayuda". .@prince$;
 	next;
 	mes "[Visiting Prince]";
-	mes "Cursed Thanatos Magic Trace! Are you ready to have a new master?";
-	npctalk "Visiting Prince: Cursed Thanatos Magic Trace! Are you ready to have a new master?", .@prince$;
+	mes "Cursed Thanatos Magic Trace! ¿Estás listo para tener un nuevo maestro?";
+	npctalk "Visiting Prince: Cursed Thanatos Magic Trace! ¿Estás listo para tener un nuevo maestro?", .@prince$;
 	next;
 	cutin "tartanos.bmp",3;
 	mes "[Thanatos Magic Trace]";
-	mes "How dare you!";
-	npctalk "Thanatos Magic Trace: How dare you!", instance_npcname("Thanatos Magic Trace#dk2");
+	mes "¿Cómo te atreves?";
+	npctalk "Thanatos Magic Trace: ¿Cómo te atreves?", instance_npcname("Thanatos Magic Trace#dk2");
 	next;
 	mes "[Visiting Prince]";
 	mes "aah, aah !!!";
@@ -664,25 +664,25 @@ OnMyMobDead:
 1@spa,216,43,3	script	Princess Tiara#dk1	4_F_MAYSEL,{
 	.@guard$ = instance_npcname("Lurid Royal Guard#dk5");
 	mes "[Princess Tiara]";
-	mes "You kept your promise.";
-	npctalk "Princess Tiara: You kept your promise.";
+	mes "Cumpliste tu promesa";
+	npctalk "Princesa Tiara: cumpliste tu promesa";
 	next;
 	mes "[Lurid Royal Guard]";
-	mes "princess!";
-	npctalk "Lurid Royal Guard: Princess!", .@guard$;
+	mes "princesa";
+	npctalk "Lurid Royal Guard: ¡Princesa!", .@guard$;
 	next;
 	cutin "npc-tiara.bmp",3;
 	mes "[Princess Tiara]";
-	mes "Thank you... now I can rest beside you...";
-	npctalk "Princess Tiara: Thank you... now I can rest beside you...";
+	mes "Gracias ... ahora puedo descansar a tu lado ...";
+	npctalk "Princesa Tiara: Gracias ... ahora puedo descansar a tu lado ...";
 	next;
 	mes "[Lurid Royal Guard]";
 	mes "No..No!!!!!";
 	npctalk "Lurid Royal Guard: No..No!!!!!", .@guard$;
 	next;
 	mes "[The voice of Princess Tiara]";
-	mes "I want to be with you forever in peace...forever...";
-	npctalk "Princess Tiara: I want to be with you forever in peace...forever...";
+	mes "Quiero estar contigo para siempre en paz ... para siempre ...";
+	npctalk "Princesa Tiara: Quiero estar contigo para siempre en paz ... para siempre ...";
 	next;
 	cutin "b-tiara.BMP",3;
 	mes "[Lurid Royal Guard]";
@@ -690,8 +690,8 @@ OnMyMobDead:
 	npctalk "Lurid Royal Guard: no.....Ahh ahh ahh!!!!~!", .@guard$;
 	next;
 	mes "[The voice of Princess Tiara]";
-	mes "I love you...";
-	npctalk "Princess Tiara: I love you...";
+	mes "Te amo ...";
+	npctalk "Princesa Tiara: te amo ...";
 	cutin "",255;
 	close2;
 	donpcevent instance_npcname("#gp_control_6") + "::OnStart";
@@ -716,26 +716,26 @@ OnStart:
 	sleep 2000;
 	.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead1";
 	monster 'map_spa$,217,52, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
-	unittalk $@mobid[0], "Wake up! look at us... We are monsters?";
+	unittalk $@mobid[0], "¡Despierten! Mírennos ... ¿somos monstruos?";
 	monster 'map_spa$,190,21, "Tarnished Oath" ,2954,1, .@label$;	// COLORLESS_VOW
-	unittalk $@mobid[0], "Sakray killed the King and tried to kill us!";
+	unittalk $@mobid[0], "¡Sakray mató al rey y trató de matarnos!";
 	monster 'map_spa$,198,49, "Tarnished Oath" ,2954,1, .@label$;	// COLORLESS_VOW
-	unittalk $@mobid[0], "What is this..??";
+	unittalk $@mobid[0], "Que es esto..??";
 	monster 'map_spa$,212,28, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
-	unittalk $@mobid[0], "Sakray killed a princess!";
+	unittalk $@mobid[0], "¡Sakray mató a una princesa!";
 	end;
 OnMyMobDead1:
 	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead1") < 1) {
 		sleep 2000;
 		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead2";
 		monster 'map_spa$,217,43, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
-		unittalk $@mobid[0], "Wake up! look at us... We are monsters?";
+		unittalk $@mobid[0], "¡Despierten! Mírennos ... ¿somos monstruos?";
 		monster 'map_spa$,193,24, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
 		unittalk $@mobid[0], "Sakray..?? why.....Sakray!";
 		monster 'map_spa$,216,59, "Tarnished Oath" ,2954,1, .@label$;	// COLORLESS_VOW
-		unittalk $@mobid[0], "Sakray killed the King and tried to kill us!";
+		unittalk $@mobid[0], "¡Sakray mató al rey y trató de matarnos!";
 		monster 'map_spa$,197,57, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
-		unittalk $@mobid[0], "Sakray killed a princess!";
+		unittalk $@mobid[0], "¡Sakray mató a una princesa!";
 	}
 	end;
 OnMyMobDead2:
@@ -743,20 +743,20 @@ OnMyMobDead2:
 		sleep 2000;
 		.@label$ = instance_npcname("#gp_control_6") + "::OnMyMobDead3";
 		monster 'map_spa$,193,39, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
-		unittalk $@mobid[0], "Wake up! look at us... We are monsters?";
+		unittalk $@mobid[0], "¡Despierten! Mírennos ... ¿somos monstruos?";
 		monster 'map_spa$,212,34, "Forgotten Name" ,2957,1, .@label$;	// FORGOTTEN_NAME
-		unittalk $@mobid[0], "Sakray..?? why.....Sakray!";
+		unittalk $@mobid[0], "Sakray ... ¿por qué ... Sakray!";
 		monster 'map_spa$,201,64, "Tarnished Oath" ,2954,1, .@label$;	// COLORLESS_VOW
-		unittalk $@mobid[0], "Sakray killed the King and tried to kill us!";
+		unittalk $@mobid[0], "¡Sakray mató al rey y trató de matarnos!";
 		monster 'map_spa$,175,44, "Fatal Days" ,2958,1, .@label$;		// FATAL_DAYS
-		unittalk $@mobid[0], "Sakray killed a princess!";
+		unittalk $@mobid[0], "¡Sakray mató a una princesa!";
 	}
 	end;
 OnMyMobDead3:
 	if (mobcount('map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead3") < 1) {
 		sleep 2000;
 		monster 'map_spa$,200,45, "Torturous Redeemer" ,2961,1, instance_npcname("#gp_control_6") + "::OnMyMobDead4";	// E_TORTUROUS_REDEEMER
-		unittalk $@mobid[0], "Thanatos Magic Trace! I will destroy you if I can't have you... Oh no! How could this be?";
+		unittalk $@mobid[0], "Thanatos Magic Trace! Te destruiré si no puedo tenerte ... ¡Oh no! ¿Cómo podría ser esto?";
 		sleep 5000;
 		killmonster 'map_spa$, instance_npcname("#gp_control_6") + "::OnMyMobDead4";
 		enablenpc instance_npcname("Sakray#dk");
@@ -770,66 +770,66 @@ OnMyMobDead4:
 
 1@spa,196,44,5	script	Sakray#dk	4_M_SAKRAY,{
 	mes "[Lurid Royal Guard]";
-	mes "Are you satisfied..? Thanatos Magic Trace?";
-	npctalk "Lurid Royal Guard: Are you satisfied..? Thanatos Magic Trace?";
+	mes "¿Estás satisfecho ...? Thanatos Magic Trace?";
+	npctalk "Lurid Royal Guard: ¿Estás satisfecho ...? Thanatos Magic Trace?";
 	next;
 	mes "[Thanatos Magic Trace]";
-	mes "I need more blood..Sakray, offer me his blood.";
-	npctalk "Thanatos Magic Trace: I need more blood..Sakray, offer me his blood.", instance_npcname("Thanatos Magic Trace#dk3");
+	mes "Necesito más sangre..Sakray, ofréceme su sangre";
+	npctalk "Thanatos Magic Trace: Necesito más sangre..Sakray, ofréceme su sangre", instance_npcname("Thanatos Magic Trace#dk3");
 	next;
 	mes "[Sakray]";
-	mes "Okay, that is good. A traveller. Did you see?";
-	npctalk "Sakray: Okay, that is good. A traveller. Did you see?";
+	mes "Está bien, eso es bueno. Un viajero. ¿Lo viste?";
+	npctalk "Sakray: Bien, eso es bueno. Un viajero. ¿Lo viste?";
 	next;
 	mes "[" + strcharinfo(0) + "]";
-	mes "Sakray, what do you want? Sympathy? Or is it a trap?";
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Sakray, what do you want? Sympathy? Or is it a trap?";
+	mes "Sakray, ¿qué quieres? ¿Simpatía? ¿O es una trampa?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : Sakray, ¿qué quieres? ¿Simpatía? ¿O es una trampa? ";
 	next;
 	mes "[Sakray]";
-	mes "No... I do not need to make any effort to catch a novice.";
-	npctalk "Sakray: No... I do not need to make any effort to catch a novice.";
+	mes "No ... no necesito hacer ningún esfuerzo para atrapar a un novato";
+	npctalk "Sakray: No ... no necesito hacer ningún esfuerzo para atrapar a un novato";
 	next;
 	mes "[" + strcharinfo(0) + "]";
-	mes "If so... then why...?";
-	unittalk getcharid(3), "" + strcharinfo(0) + " : If so... then why...?";
+	mes "Si es así ... ¿por qué ...?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : Si es así ... ¿por qué ...?";
 	next;
 	cutin "cry-b.bmp",2;
 	mes "[Sakray]";
-	mes "I wanted to get rid of a piece of humanity inside of me through you.";
-	npctalk "Sakray: I wanted to get rid of a piece of humanity inside of me through you.";
+	mes "Quería deshacerme de una parte de la humanidad dentro de mí a través de ti";
+	npctalk "Sakray: Quería deshacerme de una parte de la humanidad dentro de mí a través de ti";
 	next;
 	mes "[Sakray]";
-	mes "I am quite satisfied with the result.";
-	npctalk "Sakray: I am quite satisfied with the result.";
+	mes "Estoy bastante satisfecho con el resultado";
+	npctalk "Sakray: estoy bastante satisfecho con el resultado.";
 	next;
 	mes "[Thanatos Magic Trace]";
-	mes "Sakray, offer the blood to me now!";
-	npctalk "Thanatos Magic Trace: Sakray, offer the blood to me now!", instance_npcname("Thanatos Magic Trace#dk3");
+	mes "Sakray, ¡ofréceme la sangre ahora!";
+	npctalk "Thanatos Magic Trace: Sakray, ¡ofréceme la sangre ahora!", instance_npcname("Thanatos Magic Trace#dk3");
 	next;
 	mes "[Sakray]";
-	mes "If you were me, what would you do?";
-	npctalk "Sakray: If you were me, what would you do?";
+	mes "Si fueras yo, ¿qué harías?";
+	npctalk "Sakray: Si fueras yo, ¿qué harías?";
 	next;
 	mes "[Sakray]";
-	mes "Can you set yourself free from this curse?";
-	npctalk "Sakray: Can you set yourself free from this curse?";
+	mes "¿Puedes liberarte de esta maldición?";
+	npctalk "Sakray: ¿Puedes liberarte de esta maldición?";
 	next;
 	mes "[" + strcharinfo(0) + "]";
 	mes "...";
 	unittalk getcharid(3), "" + strcharinfo(0) + " : ...";
 	next;
 	mes "[Sakray]";
-	mes "Heh heh... I will keep watching you until the day comes when you are old enough.";
-	npctalk "Sakray: Heh heh... I will keep watching you until the day comes when you are old enough.";
+	mes "Heh heh ... Te seguiré mirando hasta que llegue el día en que seas mayor de edad";
+	npctalk "Sakray: Je je ... Te seguiré mirando hasta que llegue el día en que seas lo suficientemente mayor";
 	next;
 	mes "[Sakray]";
-	mes "I am willing to hunt you later for Thanatos.";
-	npctalk "Sakray: I am willing to hunt you later for Thanatos.";
+	mes "Estoy dispuesto a buscarte más tarde por Thanatos";
+	npctalk "Sakray: estoy dispuesto a buscarte más tarde por Thanatos";
 	cutin "",255;
 	next;
 	mes "[Sakray]";
-	mes "Farewell then.";
-	npctalk "Sakray: Farewell then.";
+	mes "Adiós, entonces.";
+	npctalk "Sakray: Adiós, entonces.";
 	close2;
 	donpcevent instance_npcname("#tb") + "::OnStart";
 	end;
@@ -846,22 +846,22 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer3000:
-	npctalk "Voice of Princess Tiara : What can I do for you?";
+	npctalk "Voice of Princess Tiara: ¿Qué puedo hacer por ti?";
 	end;
 OnTimer8000:
-	npctalk "Voice of Sakray : I will always stand by you. Please rest beside me.", instance_npcname("#sv");
+	npctalk "Voice of Sakray: siempre estaré a tu lado. Por favor descansa a mi lado", instance_npcname ("# sv");
 	end;
 OnTimer13000:
-	npctalk "Thanatos Magic Trace: Sakray, do not forget the covenant of blood between us.", instance_npcname("#tv");
+	npctalk "Thanatos Magic Trace: Sakray, no olvides el pacto de sangre entre nosotros", instance_npcname ("# tv");
 	end;
 OnTimer17000:
-	npctalk "Thanatos Magic Trace: Your soul is mine until you find the blood that satisfies me...", instance_npcname("#tv");
+	npctalk "Thanatos Magic Trace: Tu alma es mía hasta que encuentres la sangre que me satisface ...", instance_npcname ("# tv");
 	end;
 OnTimer22000:
-	npctalk "Voice of Sakray : Rest in the shadow with me.", instance_npcname("#sv");
+	npctalk "Voice of Sakray: Descansa en la sombra conmigo", instance_npcname ("# sv");
 	end;
 OnTimer25000:
-	npctalk "Voice of Sakray : In the dark forever...", instance_npcname("#sv");
+npctalk "Voice of Sakray: En la oscuridad para siempre ...", instance_npcname ("# sv");
 	end;
 OnTimer28500:
 	disablenpc instance_npcname("#tb");
@@ -880,30 +880,30 @@ OnTimer28500:
 1@spa,204,29,1	script	King#dk11	4_M_RUSKING,{
 	disable_items;
 	mes "[King]";
-	mes "Hey there, are you alive?";
-	mes "I did not expect to meet someone who is still alive.";
+	mes "Hola, ¿estás vivo?";
+	mes "No esperaba encontrarme con alguien que todavía esté vivo";
 	next;
 	mes "[King]";
-	mes "Do you possibly have the ^006400Gray Shard^000000?";
-	mes "Can you give it to me?";
-	mes "The memories of the faithful royal guard";
-	mes "and the memories of everyone he loved";
-	mes "are contained inside of these shards.";
+	mes "¿Es posible que tengas el ^006400Gray Shard ^000000?";
+	mes "¿Me lo puedes dar?";
+	mes "Los recuerdos de la fiel guardia real";
+	mes "y los recuerdos de todos los que amaba";
+	mes "están contenidos dentro de estos fragmentos.";
 	next;
 	mes "[King]";
-	mes "Will you give the ^006400Gray Shard^000000 to me?";
-	mes "The guilt is eating my soul.";
-	mes "My soul is stuck within the Ghost Palace.";
+	mes "¿Me darás el ^006400Gray Shard ^000000?";
+	mes "La culpa está comiendo mi alma";
+	mes "Mi alma está atrapada dentro del Palacio Fantasma";
 	next;
 	mes "[King]";
-	mes "I am collecting Sakray's abandoned memories from these shards.";
+	mes "Estoy recopilando los recuerdos abandonados de Sakray de estos fragmentos";
 	next;
 	mes "[King]";
-	mes "If you give any ^006400Gray Shard^000000s to me, I can make equipment for you.";
-	next;
+	mes "Si me das ^006400Grady Shard ^000000s, puedo crear nuevos equipamientos para usted.";
+	next;1
 	mes "[King]";
-	mes "The cursed knight...";
-	mes "Please help me save the soul of Sakray.";
+	mes "El caballero maldito ...";
+	mes "Por favor, ayúdame a salvar el alma de Sakray".;
 	next;
 	setarray .@item_name$[0],
 		"Thanatos Sword", "Thanatos Great Sword", "Thanatos Spear", "Thanatos Long Spear", "Thanatos Staff",
@@ -914,53 +914,53 @@ OnTimer28500:
 
 	for ( .@i = 0; .@i < 20; .@i++ )
 		.@menu$ += .@item_name$[.@i] + ":";
-	.@menu$ += "Cancel";
+	.@menu$ += "Cancelar";
 
 	while(true) {
 		.@s = select(.@menu$) - 1;
 		if (.@s == 20) {
 			mes "[King]";
-			mes "Someday, Sakray will";
-			mes "get out of this curse for sure.";
-			mes "I believe";
-			mes "^006400Gray Shard^000000s are the only method";
-			mes "to save him....";
+	mes "Algún día, Sakray lo hará";
+	mes "salir de esta maldición con seguridad.";
+	mes "Yo creo";
+	mes "^006400Grady Shard ^000000s son el único método";
+	mes "para salvarlo ....";
 			close;
 		}
 		.@cost = ( .@s > 13 ? 100 : 200 );
 		mes "[King]";
-		mes "To make a ^FF0000" + .@item_name$[.@s] + "^000000";
-		mes "I need " + .@cost + " ^006400Gray Shard^000000.";
+		mes "Para hacer un ^FF0000" + .@item_name$[.@s] + "^000000";
+		mes "Necesitaré de " + .@cost + " ^006400Gray Shard^000000.";
 		next;
-		if (select( "Cancel", "Hand over " + .@cost + " Gray Shard." ) == 1) {
+		if (select( "Cancelar", "Entregar " + .@cost + " Gray Shard." ) == 1) {
 			mes "[King]";
-			mes "Someday, Sakray will";
-			mes "get out of this curse for sure.";
+			mes "Algún día, Sakray lo hará";
+			mes "salir de esta maldición con seguridad.";
 			next;
 			continue;
 		}
 		if (countitem(6672) < .@cost) {
 			mes "[King]";
-			mes "You do not have enough ^006400Gray Shard^000000";
-			mes "to make a ^FF0000" + .@item_name$[.@s] + "^000000.";
-			mes "I need " + .@cost + " ^006400Gray Shard^000000.";
+			mes "No tienes suficiente(s) ^006400Gray Shard^000000";
+			mes "para crear ^FF0000" + .@item_name$[.@s] + "^000000.";
+			mes "Necesito de " + .@cost + " ^006400Gray Shard^000000.";
 			next;
 			continue;
 		}
 		mes "[King]";
-		mes "I will make a ^FF0000" + .@item_name$[.@s] + "^000000";
-		mes "with " + .@cost + " ^006400Gray Shard^000000.";
+		mes "Comenzaré a crear un ^FF0000" + .@item_name$[.@s] + "^000000";
+		mes "con " + .@cost + " ^006400Gray Shard^000000.";
 		next;
-		mes "You see a light through the folded hands of the king and it gradually takes on a shape.";
-		next;
-		mes "[King]";
-		mes "All right, it is done.";
-		mes "Take this ^FF0000" + .@item_name$[.@s] + "^000000";
-		mes "to confront Sakray and Thanatos.";
+		mes "Ves una luz a través de las manos dobladas del rey y gradualmente adquiere una forma";
 		next;
 		mes "[King]";
-		mes "The power requires a sacrifice.";
-		mes "Please be careful...";
+		mes "Está bien, está hecho.";
+		mes "Recibe este ^FF0000" + .@item_name$[.@s] + "^000000";
+		mes "para confrontar a Sakray y Thanatos.";
+		next;
+		mes "[King]";
+		mes "El poder requiere un sacrificio";
+		mes "Tengan cuidado ...";
 		delitem 6672,.@cost;// Gray Shard
 		getitem .@items_list[.@s],1;
 		close;
@@ -970,9 +970,9 @@ OnTimer28500:
 1@spa,210,28,0	script	Way out of Palace	WARPNPC,2,2,{
 	end;
 OnTouch_:
-	mes "It is time to leave the Ghost Palace.";
-	mes "Everything is now complete";
-	mes "and will vanish..";
+		mes "Es hora de abandonar el Palacio Fantasma";
+		mes "Todo está ahora completo";
+		mes "y desaparecerá ...";
 	close2;
 	if (isbegin_quest(1263) == 2)
 		getitem 6672,1;// Gray Shard
