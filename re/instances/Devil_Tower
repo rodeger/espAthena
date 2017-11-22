@@ -11,12 +11,12 @@
 dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 	if (BaseLevel < 130) {
 		mes "[Shep]";
-		mes "Are you volunteering to explore the Devil's Tower?";
-		mes "It's extremely dangerous so you need to be at least ^4d4dffLevel 130^000000.";
+		mes "¿Eres voluntario para explorar Devil's Tower?";
+		mes "Es extremadamente peligroso, por lo que debe ser al menos ^4d4dffLevel 130^000000";
 		next;
 		mes "[Shep]";
-		mes "Will you come back when you get stronger?";
-		mes "You know what I mean right?";
+		mes "¿Volverás cuando te vuelvas más fuerte?";
+		mes "¿Sabes lo que quiero decir, verdad?";
 		close;
 	}
 	switch( checkquest(7577,PLAYTIME) ) {// daily timer
@@ -25,30 +25,30 @@ dali02,134,119,5	script	Historian Shep#tnm01	4_F_NOVICE,{
 	case 0:
 	case 1:
 		mes "[Shep]";
-		mes "You want to explore again so soon?";
-		mes "Your body needs to recover from the time traveling.";
+		mes "¿Quieres explorar de nuevo tan pronto?";
+		mes "Tu cuerpo necesita recuperarse del viaje en el tiempo";
 		next;
 		mes "[Shep]";
-		mes "Take a rest day and come back tomorrow.!";
-		mes "You understand?";
+		mes "¡Tómate un día de descanso y vuelve mañana!";
+		mes "¿Entiendes?";
 		close;
 	case 2:
 		mes "[Shep]";
-		mes "Have you rested long enough?";
-		mes "I am scheduled to explore today!";
-		mes "I have always been waiting for a member of the expedition!";
+		mes "¿Has descansado lo suficiente?";
+		mes "¡Estoy programado para explorar hoy!";
+		mes "¡Siempre he estado esperando a un miembro de la expedición!";
 		erasequest 7577;// Space distortion
 		devil_tower_can_reenter = 0;
 		devil_tower_enter = 0;
 		next;
-		mes "!- Notice -!";
-		mes "You can now re-enter the Devil's Tower.";
+		mes "! - Aviso -!";
+		mes "Ahora puede volver a entrar a Devil's Tower.";
 		close;
 	}
 	if (isbegin_quest(7576) > 0) {// instance completed
 		mes "[Shep]";
-		mes "So time and space seem to have converged there?";
-		mes "I'm amazed that time travel is possible.";
+		mes "¿Entonces el tiempo y el espacio parecen haberse convergido allí?";
+		mes "Estoy sorprendido de que el viaje en el tiempo sea posible";
 		next;
 		mes "[Shep]";
 		mes "This is all you have.";
