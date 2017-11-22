@@ -1071,10 +1071,10 @@ OnTimer1000:
 		monster 'map_tnm2$,.@south_east[.@i],.@south_east[.@i+1], "",2960,1, .@label$;	
 		monster 'map_tnm2$,.@north_east[.@i],.@north_east[.@i+1], "",2960,1, .@label$;	
 			'Flame[.@i] = $@mobid[0];
-		sleep 200;
-
-	unitskilluseid 'Flame[.@i], 535, 5,0,-100;
-		sleep 1000;
+			getunitdata 'Flame[.@i],.@flame_data;
+			.@x = .@flame_data[UMOB_X];
+			.@y = .@flame_data[UMOB_Y];
+	unitskillusepos 'Flame[.@i], 535, 10,.@x,.@y,-100;
 		
 	}
 	end;
