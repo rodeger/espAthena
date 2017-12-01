@@ -277,11 +277,11 @@ OnNormalDied:
 
 		if('instance_porv_level == 3)
 		{
-			instance_announce instance_id(), "[King Poring] What is it? Who are you?", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] ¿Quién eres tú?, ¿Qué haces aquí?.", bc_map, 0xFF0000;
 			sleep2 1500;
-			instance_announce instance_id(), "[King Poring] What are you doing here?", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] ¡Este lugar no te pertenece!", bc_map, 0xFF0000;
 			sleep2 1500;
-			instance_announce instance_id(), "[King Poring] You have no right to be here! I'll smash you to death!", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] Has llegado al lugar equivocado, ¡Preparate para morir!", bc_map, 0xFF0000;
 			sleep2 1500;
 		}
 		summon_guardian( .@map$, .@npc_name$ + "::OnGuardianDied" );
@@ -298,11 +298,11 @@ OnGuardianDied:
 
 		if('instance_porv_level == 3)
 		{
-			instance_announce instance_id(), "[King Poring] Thank you adventurer...I don't know what...Why would I...?", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] Muchas gracias... no recuerdo...acaso yo...?", bc_map, 0xFF0000;
 			sleep2 1500;
-			instance_announce instance_id(), "[King Poring] Anyway...Thanks for your help?!", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] De todos modos, ¡...Gracias por su ayuda!", bc_map, 0xFF0000;
 			sleep2 1500;
-			instance_announce instance_id(), "[King Poring] You'll be the Porings friends till the end!", bc_map, 0xFF0000;
+			instance_announce instance_id(), "[King Poring] ¡De ahora en adelante, son bievenidos a estas islas!", bc_map, 0xFF0000;
 			enablenpc instance_npcname( "alapovivig", instance_id() );
 			sleep2 25000;		
 			getpartymember getcharid(1),2;
@@ -325,7 +325,7 @@ OnTimer10000:
 	set .timerCount, .timerCount + 10;
 	if(.timerCount == $porv_timer_delay)
 	{
-		instance_announce instance_id(), "[ Poring Village ] The King lost his mind! I have to get you out of there!", bc_map, 0x00FF00;
+		instance_announce instance_id(), "[ Poring Village ] ¡El rey ha perdido su cordura, será mejor salir de aqui!.", bc_map, 0x00FF00;
 		sleep 5000;
 		getpartymember getcharid(1),2;
 		for( set .@i, 0; .@i < $@partymembercount; set .@i, .@i+1 )
@@ -346,9 +346,9 @@ OnTouch:
 	if('porvTalking == 0)
 	{
 		set 'porvTalking, 1;
-		instance_announce instance_id(), "[Poring Guard] Get ready. I'll drop this barricade we've set up.", bc_map, 0x00FF00;
+		instance_announce instance_id(), "[Poring Guard] Preparate, voy a derribar estas barreras.", bc_map, 0x00FF00;
 		sleep2 1500;
-		instance_announce instance_id(), "[Poring Guard] Once in, you'll only have to go straigth to encounter the King.", bc_map, 0x00FF00;
+		instance_announce instance_id(), "[Poring Guard] Una vez que lo haya hecho, deberás encontrar al Rey.", bc_map, 0x00FF00;
 		sleep2 1500;
 		specialeffect 90;
 		disablenpc instance_npcname( "alapovibar", instance_id() );
@@ -371,8 +371,8 @@ OnEnable:
 
 1@begi,146,35,5	script	Village Guard::alapovivig	4_ANGELING,{
 	mes "[Village Guard]";
-	mes "Thank you for your help!";
-	mes "I'm gonna send you back.";
+	mes "¡Gracias por tu ayuda!";
+	mes "Te enviaré de vuelta.";
 	warp "prt_fild05", 144, 238;
 	close;
 
