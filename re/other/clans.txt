@@ -13,64 +13,67 @@
 
 prontera,138,183,7	script	Clan Helper	703,{
 	mes "[Clan Helper]";
-	mes "Do you want to build connections without being in a guild?";
+	mes "¿Quieres construir conexiones sin estar en un gremio?";
 	next;
 	mes "[Clan Helper]";
-	mes "Can't find the perfect guild for yourself?";
+	mes "¿No puedes encontrar el gremio perfecto para ti?";
 	next;
 	mes "[Clan Helper]";
-	mes "You can join or leave clans freely! Just join!";
+	mes "¡Puedes unirte o dejar clanes libremente! ¡Únete!";
 	next;
 	mes "[Clan Helper]";
-	mes "Now, come on in and meet the masters of the Kingdom's best clans!";
+	mes "¡Ahora ven y conoce a los maestros de los mejores clanes del Reino!";
+	next;
+	mes "[Clan Helper]";
+	mes "¡Solo debes visitar el Gremio Central!.";
 	close;
 }
 
 prt_in,33,114,5	script	Raffam Oranpere	10058,{
 	cutin "laperm01.bmp", 2;
 	mes "[Raffam Oranpere]";
-	mes "Hi! I'm Raffam, master of the ^3131FFSword Clan^000000 in the Rune-Midgard Kingdom.";
+	mes "Hola, soy Raffam, amo del ^3131FFClan Espadachin^000000 en el Reino de Rune-Midgard.";
 	next;
-	switch( select( "Clan Information:Join.:Leave." ) ){
+	switch( select( "Información:Unirse.:Salir." ) ){
 		case 1:
-			switch( select( "What are Clans?:About the Sword Clan:Cancel." ) ){
+			switch( select( "¿Qué son los Clanes?:Acerca de este Clan:Cancelar." ) ){
 				case 1:
-					mes "[Raffam Oranpere]";
-					mes "The ^3131FFClans^000000 are a type of guild ran by the Kingdom.";
-					mes "They don't participate in the Siege, so members are free to join/leave anytime.";
-					next;
-					mes "[Raffam Oranpere]";
-					mes "I wish we could join the Siege. I'd love flying over on my dragon and burning everyone in my way!";
-					mes "Oops, too thrilled!";
-					next;
-					mes "[Raffam Oranpere]";
-					mes "Join us, if no Clan suits your taste.";
-					mes "New members are given ^3131FFfree stat bonuses^000000.";
-					next;
-					mes "[Raffam Oranpere]";
-					mes "Melee stats are offered as the name ^3131FFSword Clan^000000 suggests, but not all members are Melee classes.";
-					mes "Don't feel pressured, just count on me!";
-					next;
-					cutin "laperm02.bmp", 2;
-					mes "[Raffam Oranpere]";
-					mes "Differences in variety creates the fun.";
-					mes "These odd bunches never bore me in the party.";
-					next;
-					mes "[Raffam Oranpere]";
-					mes "And who knows you might meet your soul mate in the Clan? Hahah!";
-					break;
+				mes "[Raffam Oranpere]";
+				mes "Los ^3131FFClane ^000000 son un tipo de gremio administrado por el Reino.";
+				mes "No participan en el Sitio, por lo que los miembros pueden unirse / retirarse en cualquier 	momento";
+				next;
+				mes "[Raffam Oranpere]";
+				mes "Desearía poder unirme al asedio. ¡Me encantaría volar sobre mi dragón y quemar a todos en mi camino!";
+				mes "¡Uy, que emocionante!";
+				next;
+				mes "[Raffam Oranpere]";
+				mes "Únete a nosotros, si ningún Clan se adapta a tu gusto";
+				mes "Se otorgan nuevos a sus miembros ^3131FFbonificaciones de estadísticas gratuitas^000000.";
+				next;
+				mes "[Raffam Oranpere]";
+				mes "Las estadísticas de Melee se ofrecen como lo sugiere su nombre, ^3131FFClan Espadachin ^000000, pero no todos los miembros son clases de Melee.";
+				mes "¡No te sientas presionado, solo cuenta conmigo!";
+				next;
+				cutin "laperm02.bmp", 2;
+				mes "[Raffam Oranpere]";
+				mes "Las diferencias en variedad crean la diversión.";
+				mes "Estos raros racimos nunca me aburrieron en la fiesta";
+				next;
+				mes "[Raffam Oranpere]";
+				mes "¿Y quién sabe si podrías conocer a tu alma gemela en el Clan? ¡Hahah!";
+				break;
 				case 2:
 					mes "[Raffam Oranpere]";
-					mes "The ^3131FFSword Clan^000000 mainly supports Melee adventurers.";
-					mes "Join for free ^FF0000<STR+1, VIT+1, MHP+30, MSP+10>^000000!";
+					mes "El ^3131FFClan Espadachin^000000 es principalmente compatible con los aventureros 	cuerpo a cuerpo.";
+					mes "Únete gratis y obten las siguientes estadisticas: ^FF0000<STR + 1, VIT + 1, MHP + 30, MSP + 10>^000000!";
 					next;
 					mes "[Raffam Oranpere]";
-					mes "Remember, no Siege participation.";
-					mes "You should contact other guilds for Siege.";
+					mes "Recuerda, no participamos en las Guerras por el Emperium";
+					mes "Debes contactar a otros gremios para participar a dichas Guerras.";
 					next;
 					mes "[Raffam Oranpere]";
-					mes "A question?";
-					mes "Excited to join me? Hahah!";
+					mes "¿Una pregunta?";
+					mes "¿Estás emocionado de unirte a mí? ¡JaJaJa!";
 					break;
 				case 3:
 					break;
@@ -78,83 +81,82 @@ prt_in,33,114,5	script	Raffam Oranpere	10058,{
 			break;
 		case 2:
 			mes "[Raffam Oranpere]";
-			mes "Oh, you'll join? Good choice!";
-			mes "Let's check the Clan policy then to begin admission procedures.";
+			mes "Oh, te unirás? ¡Buena elección!";
+			mes "Vamos a verificar la política del clan para comenzar los procedimientos de admisión";
 			next;
 			mes "[Raffam Oranpere]";
-			mes "^3131FFClansmen^000000 cannot participate in the Siege.";
-			mes "New members are given these stat bonuses: ^FF0000<STR+1, VIT+1, MHP+30, MSP+10>^000000.";
-			mes "You with me so far?";
+			mes "Recuerda, los ^3131FFClanes^000000 no participan en WoEs.";
+			mes "A los miembros nuevos se les otorgan estas bonificaciones estadísticas: ^FF0000 <STR + 1, VIT + 1, MHP + 30, MSP + 10> ^000000.";
+			mes "¿Estás conmigo hasta ahora?";
 			next;
-			if( select( "Yes.:No." ) == 1 ){
+			if( select( "Si.:No." ) == 1 ){
 				mes "[Raffam Oranpere]";
-				mes "You can join and leave a Clan anytime, but if you don't login for ^FF0000more than 2 weeks^000000, you'll be ^FF0000expelled^000000.";
-				mes "Clan masters exist for reason, like I.";
-				mes "Understood?";
+				mes "Puedes unirte y dejar un Clan en cualquier momento, pero si no inicias sesión por ^FF00002 semanas^000000, serás ^FF0000eliminado^000000.";
+				mes "Los maestros del clan existen por la razón, como yo";
+				mes "¿Entendido?";
 				next;
-				if( select( "Yes.:No." ) == 1 ){
+				if( select( "Si.:No." ) == 1 ){
 					mes "[Raffam Oranpere]";
-					mes "Great, sign your name here to register.";
+					mes "Genial, ingresa tu nombre para inscribirte:";
 					next;
 					input .@name$;
 					mes "[Raffam Oranpere]";
-					mes "So, you're ^3131FF" + strcharinfo( 0 ) + "^000000! Nice name!";
-					mes "Let me register you.";
+					mes "Entonces te llamas ^3131FF" + strcharinfo( 0 ) + "^000000! Buen Nombre!";
+					mes "Comenzaré con tu registro...";
 					next;
 					if( getcharid( 2 ) ){
 						mes "[Raffam Oranpere]";
-						mes "Come back to join after you leave your current guild.";
+						mes "Vuelve cuando hayas abandonado a tu Guild.";
 						close;
 					}else if( getcharid( 5 ) != 0 ){
 						cutin "laperm04.bmp", 2;
 						mes "[Raffam Oranpere]";
-						mes "Eh? Oh, you're in a Clan.";
-						mes "Don't mess with me, it's not cool!";
+						mes "Eh? Oh, ya te encuentras en un clan.";
+						mes "No juegues conmigo, no es divertido.";
 					}else{
 						cutin "laperm02.bmp", 2;
 						if (clan_join(SWORDCLAN)) {
 							sc_start2 SC_SWORDCLAN, -1, 0, SWORDCLAN;
 							mes "[Raffam Oranpere]";
-							mes "Welcome to the ^3131FFSword Clan^000000!";
-							mes "You can review Clan info with ^3131FFCtrl+G^000000.";
-							mes "At your service!";
+							mes "Bienvenido al ^3131FFClan Espadachin^000000!";
+							mes "Puedes obtener información del clan presionando ^3131FFCtrl+G^000000.";
 						} else
-							mes "An error has occurred.";
+							mes "Ha ocurrido un error, favor contactar con el Staff.";
 					}
 				}else{
 					mes "[Raffam Oranpere]";
-					mes "Uh, oh. Let's go back to the beginning.";
+					mes "Uh, oh. Volvamos al principio.";
 				}
 			}else{
 				cutin "laperm03.bmp", 2;
 				mes "[Raffam Oranpere]";
-				mes "Uh, oh. Let's go back to the beginning.";
+				mes "Uh, oh. Volvamos al principio.";
 			}
 			break;
 		case 3:
 			cutin "laperm01.bmp", 2;
 			mes "[Raffam Oranpere]";
-			mes "You want to leave?";
-			mes "No problem. I hope you'll find a more suitable Clan.";
-			mes "Ready for withdrawal?";
+			mes "¿Quieres irte?";
+			mes "No hay problema. Espero que encuentres un Clan más adecuado";
+			mes "¿Listo para tu retirada?";
 			next;
-			if( select( "Continue.:Cancel." ) == 1 ){
+			if( select( "Continuar.:Cancelar." ) == 1 ){
 				if( getcharid( 5 ) == 0 ){
 					cutin "laperm04.bmp", 2;
 					mes "[Raffam Oranpere]";
-					mes "Wait, you're not with us! Grr, don't make me breathe fire at you!";
+					mes "Espera, ¡no estás con nosotros! ¡Grr, no me hagas respirar fuego contra ti!";
 				}else if( getcharid( 5 ) != SWORDCLAN ){
 					cutin "laperm04.bmp", 2;
 					mes "[Raffam Oranpere]";
-					mes "Hey, talk to your guild master if you want to leave.";
+					mes "Oye, habla con tu maestro del gremio si quieres irte.";
 				}else{
 					if (clan_leave()) {
 						sc_end SC_SWORDCLAN;
 						mes "[Raffam Oranpere]";
-						mes "Okay, it's done. But let's not be strangers, okay?";
-						mes "It was nice having you!";
+						mes "De acuerdo, ya está hecho. Pero no seamos extraños, ¿de acuerdo?";
+						mes "¡Fue lindo tenerte!";
 					} else
-						mes "An error has occurred.";
+						mes "Ha ocurrido un error, favor contactar con el Staff.";
 				}
 			}
 			break;
