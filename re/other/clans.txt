@@ -173,24 +173,24 @@ OnInit:
 prt_in,35,114,5	script	Devon Aire	10059,{
 	cutin "debon01.bmp", 2;
 	mes "[Devon Aire]";
-	mes "I'm Devon, master of the ^3131FFArc Wand Clan^000000.";
+	mes "Mi nombre es Devon, y soy maestro del ^3131FFClan Arcano^000000.";
 	next;
-	switch( select( "Clan Information:Join.:Leave." ) ){
+	switch( select( "Información:Unirse.:Abandonar." ) ){
 		case 1:
-			switch( select( "What are Clans?:About the Arc Wand Clan:Cancel." ) ){
+			switch( select( "¿Qué son los Clanes?:Acerca de este Clan:Cancelar." ) ){
 				case 1:
 					mes "[Devon Aire]";
-					mes "The ^3131FFClans^000000 are ran by the Kingdom, not privately like others.";
-					mes "And I manage one of them.";
+					mes "Los ^3131FFClanes^000000 son administrados por el Reino, no en privado como otros.";
+					mes "Y yo administro uno de ellos";
 					next;
 					cutin "debon02.bmp", 2;
 					mes "[Devon Aire]";
 					mes "...";
-					mes "What's with that look? You got a problem?";
+					mes "¿Qué pasa con esa mirada? ¿Tienes un problema?";
 					next;
 					cutin "birman01.bmp", 2;
 					mes "[Berman Aire]";
-					mes "Brother, you're scaring a potential member, be nice.";
+					mes "Hermano, estás asustando a un miembro potencial, sé amable.";
 					next;
 					cutin "debon02.bmp", 2;
 					mes "[Devon Aire]";
@@ -198,46 +198,46 @@ prt_in,35,114,5	script	Devon Aire	10059,{
 					next;
 					cutin "debon01.bmp", 2;
 					mes "[Devon Aire]";
-					mes "Join if you are seeking a place to fit in. We give ^3131FFfree bonus stats^000000. But no Siege participation.";
+					mes "Únete si estás buscando un lugar para encajar. Te ofrecemo ^3131FFestadisticas gratisf^000000. Sin embargo, nosotros como clan no participamos en WoE.";
 					next;
 					mes "[Devon Aire]";
-					mes "Most members are offensive Mage classes as the name ^3131FFArc Wand Clan^000000 suggests, but that's no requirement.";
+					mes "La mayoria de nuestros mismbros son Magos, como lo podrás imaginar por nuestro nombre ^3131FFClan Arcano^000000, sin embargo ser un mago no es un requisito para entrar a este clan.";
 					next;
 					cutin "debon02.bmp", 2;
 					mes "[Devon Aire]";
-					mes "...Hey, Shaam Rumi.";
-					mes "Stop hitting on my brother and get to work.";
+					mes "... Oye, Shaam Rumi.";
+					mes "Deja de golpear a mi hermano y ponte a trabajar";
 					next;
 					cutin "sham03.bmp", 2;
 					mes "[Shaam Rumi]";
-					mes "Whatever!";
+					mes "¡Lo que sea!";
 					next;
 					cutin "debon02.bmp", 2;
 					mes "[Devon Aire]";
 					mes "...Hmpf!";
-					mes "Listen, Crossbow Clan's master is evil.";
+					mes "Escucha, el maestro del Clan Ballesta es malvado.";
 					next;
 					cutin "sham02.bmp", 2;
 					mes "[Shaam Rumi]";
-					mes "Get over me, Devon! Don't spread rumors!";
+					mes "¡Suéltame, Devon! ¡No inventes rumores!";
 					next;
 					cutin "birman01.bmp", 2;
 					mes "[Berman Aire]";
-					mes "Haha. Stop it. You two are making a scene.";
-					mes "Come on, back to work guys.";
+					mes "Jaja. Basta. Ustedes dos están haciendo una escena";
+					mes "Vamos, vamos a trabajar chicos";
 					break;
 				case 2:
 					cutin "debon01.bmp", 2;
 					mes "[Devon Aire]";
-					mes "The ^3131FFArc Wand Clan^000000 mainly supports offensive Mage classes.";
-					mes "We offer ^FF0000<INT+1, DEX+1, MHP+30, MSP+10>^000000 to new members. Don't ask for more; it's the Kingdom's rule.";
+					mes "El ^3131FFClan Arcano^000000 soporta principalmente clases ofensivas de Magos.";
+					mes "Ofrecemos ^FF0000 <INT + 1, DEX + 1, MHP + 30, MSP + 10> ^000000 a los nuevos miembros. No pidas más, es la regla del Reino.";
 					next;
 					mes "[Devon Aire]";
-					mes "^3131FFClansmen^000000 can't participate in the Siege.";
-					mes "If you like the Siege, then go join a regular guild.";
+					mes "^3131FFLos miembros de este clan ^000000 no pueden participar en WoE.";
+					mes "Si te gusta el Asedio, entonces únete a una Guild.";
 					next;
 					mes "[Devon Aire]";
-					mes "That is all. No questions.";
+					mes "Eso es todo. Sin preguntas.";
 					break;
 				case 3:
 					break;
@@ -247,83 +247,83 @@ prt_in,35,114,5	script	Devon Aire	10059,{
 			cutin "debon01.bmp", 2;
 			mes "[Devon Aire]";
 			mes "...";
-			mes "Let's check the Clan policy then to begin admission procedures.";
+			mes "Vamos a verificar la política del clan para comenzar los procedimientos de admisión.";
 			next;
 			mes "[Devon Aire]";
-			mes "^3131FFClansmen^000000 cannot participate in the Siege.";
-			mes "New members are given these stat bonuses: ^FF0000<INT+1, DEX+1, MHP+30, MSP+10>^000000.";
-			mes "You with me so far?";
+			mes "^3131FFLos miembros de este clan ^000000 no pueden participar en WoE.";
+			mes "Los nuevos miembros reciben estas bonificaciones de estadísticas: ^FF0000<INT+1, DEX+1, MHP+30, MSP+10>^000000.";
+			mes "¿Estás conmigo hasta ahora?";
 			next;
-			if( select( "Yes.:No." ) == 1 ){
+			if( select( "Si.:No." ) == 1 ){
 				mes "[Devon Aire]";
-				mes "You can join and leave a Clan anytime, but if you don't login for ^FF0000more than 2 weeks^000000, you'll be ^FF0000expelled^000000.";
-				mes "Do you agree?";
+				mes "Puedes unirte y abandonar un Clan en cualquier momento, pero si no inicias sesión durante ^FF00002 semanas^000000, serás ^FF0000expulsado^000000.";
+				mes "¿Estás de acuerdo?";
 				next;
-				if( select( "Yes.:No." ) == 1 ){
+				if( select( "Si.:No." ) == 1 ){
 					mes "[Devon Aire]";
-					mes "Sign your name here.";
+					mes "Escribe tu nombre aqui:";
 					next;
 					input .@name$;
 					mes "[Devon Aire]";
 					mes "^3131FF" + strcharinfo( 0 ) + "^000000.....";
-					mes "Good, let me invite you in.";
+					mes "Bien, déjame invitarte.";
 					next;
 					if( getcharid( 2 ) ){
 						mes "[Devon Aire]";
-						mes "Leave your guild first to join my Clan, duh.";
+						mes "Debes dejar a tu Guild primero antes de unirte a mi Clan, duh.";
 						close;
 					}else if( getcharid( 5 ) != 0 ){
 						cutin "debon03.bmp", 2;
 						mes "[Devon Aire]";
-						mes "You're already in a Clan. You joking?!";
-						mes "Oh, I can be funny, too--FIRE PILLAR!";
+						mes "Ya estás en un clan. ¿Estás bromeando?";
+						mes "Oh, yo también puedo ser gracioso - FIRE PILLAR!";
 					}else{
 						if (clan_join(ARCWANDCLAN)) {
 							sc_start2 SC_ARCWANDCLAN, -1, 0, ARCWANDCLAN;
 							mes "[Devon Aire]";
-							mes "You have joined the ^3131FFArc Wand Clan^000000.";
+							mes "Te has unido al ^3131FFClan Arcano^000000.";
 							next;
 							mes "[Devon Aire]";
-							mes "You can review Clan info with ^3131FFCtrl+G^000000.";
-							mes "So don't bother me later.";
+							mes "Puedes revisar información del clan pulsando las teclas ^3131FFCtrl+G^000000.";
+							mes "Así no me molestarás mas tarde con preguntas estupidas.";
 							next;
 							mes "[Devon Aire]";
-							mes "That's all. Visit often or be expelled. Dismissed.";
+							mes "Eso es todo. Debes conectar seguido, de lo contrario serás expulsado.";
 						} else
-							mes "An error has occurred.";
+							mes "Ha ocurrido un error, favor contactar con el Staff.";
 					}
 				}else{
 					mes "[Devon Aire]";
-					mes "Then I don't want you.";
+					mes "Ja, de todas formas no te necesitaba.";
 				}
 			}else{
 				mes "[Devon Aire]";
-				mes "Gosh, listen to the policy again.";
+				mes "Dios, leé la política de nuevo.";
 			}
 			break;
 		case 3:
 			mes "[Devon Aire]";
-			mes "Want to leave, huh?";
-			mes "I understand, it's about Sieges. If not, why are..Never mind..";
-			mes "I'll process your withdrawal.";
+			mes "¿Quieres irte, eh?";
+			mes "Entiendo, ¿es por las WoEs no?. Si no, ¿por qué ... No importa ...";
+mes "Procesaré tú retirada";
 			next;
-			if( select( "Continue.:Cancel." ) == 1 ){
+			if( select( "Continuar.:Cancelar." ) == 1 ){
 				if( getcharid( 5 ) == 0 ){
 					cutin "debon03.bmp", 2;
 					mes "[Devon Aire]";
-					mes "Naughty children deserve a good Jupitel Thunder.";
+					mes "Los niños traviesos merecen un buen Jupitel Thunder.";
 				}else if( getcharid( 5 ) != ARCWANDCLAN ){
 					cutin "debon02.bmp", 2;
 					mes "[Devon Aire]";
-					mes "You're barking up the wrong tree. Go to your Clan master.";
+					mes "Estás ladrando al árbol equivocado. Ve con tu maestro de clan.";
 				}else{
 					if (clan_leave()) {
 						sc_end SC_ARCWANDCLAN;
 						mes "[Devon Aire]";
-						mes "You are withdrawn from the Clan.";
-						mes "Now leave. I don't feel like talking anymore.";
+						mes "Has abandonado el Clan.";
+						mes "Ahora vete. Ya no tengo ganas de hablar contigo.";
 					} else
-						mes "An error has occurred.";
+						mes "AHa ocurrido un error, favor contactar con el Staff.";
 				}
 			}		
 			break;
