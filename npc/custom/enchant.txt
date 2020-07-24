@@ -1,0 +1,302 @@
+-	shop	shop_enchanter	4_F_KAFRA1,909:-1
+invek,196,90,1	script	Encantador Artesanal	4_M_HIGH_WIZARD,{
+
+
+set .enchant$,"^FF8000[ Encantador Artesanal ]^000000";
+
+	mes .enchant$;
+	mes ("^a80acb-- Información del Encantador --^000000");
+	.@enchanter_lv = callsub(L_GetEnchanterLevel);
+	mes ("^1b2bb6Nivel :^000000 ")+.@enchanter_lv;
+	mes ("^1b2bb6Rango :^000000 ")+callsub(L_GetEnchanterTitle, .@enchanter_lv);
+	switch (select("Informacion", "Transmutar Armas", "Comprar Encantamiento")) {
+	next;
+	mes .enchant$;
+		default:
+			switch (select("Transmutar Armas", "¿Qué son las recetas?", "¿Experiencia?")) {
+				case 1:
+					mes ("Todas las armas contienen energía oculta en ellas.");
+					mes ("Yo me dedico a canalizar su energia internas y obtener escencias.");
+					mes ("Puedes utilizar estas escencias para comprar encantamientos especiales.");
+					mes ("Algunas armas se niegan a entregar su poder oculto, por lo tanto existe un riesgo que esta arma sea destruida.");
+					next;
+					mes .enchant$;
+					mes ("Armas de Nivel 2: ")+F_MesItemInfo(30008);
+					mes ("Armas de Nivel 3: ")+F_MesItemInfo(30009);
+					mes ("Armas de Nivel 4: ")+F_MesItemInfo(30014);
+					next;
+					mes .enchant$;
+					mes ("Armas Especiales: ")+F_MesItemInfo(30015);
+					next;
+					mes .enchant$;
+					mes ("Las siguientes armas enregan esta escencia...");
+					mes ("Armas Especiales: ")+F_MesItemInfo(13412);
+					mes ("Armas Especiales: ")+F_MesItemInfo(13413);				
+					mes ("Armas Especiales: ")+F_MesItemInfo(1233);	
+					mes ("Armas Especiales: ")+F_MesItemInfo(1132);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1470);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1469);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1166);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1415);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1138);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1140);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1365);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1369);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1368);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1527);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1228);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1720);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1724);
+					mes ("Armas Especiales: ")+F_MesItemInfo(1241);		
+					break;
+				case 2:
+					mes ("Puedes utilizar estas recetas para encantar cualquier parte de tu armadura 'Hat/Armadura/Botas/Garment'.");
+					mes ("A medida que vayas obteniendo mayor experiencia, podrás optar a mejores recetas.");
+					mes ("Ah.. es cierto... estas recetas pueden ser usadas por cualquiera, incluso si no es un encantador.");
+					break;
+				case 3:
+					mes ("Este es el pool de experiencia:");
+					for (.@i = 0; .@i < .exp_size; .@i++) {
+						.@total_exp += .exp[.@i];
+						mes "LV "+(.@i+1)+" - "+F_InsertComma(.@total_exp)+" EXP";
+					}
+				default: break;
+			}
+			break;
+		case 2:
+			callshop .shop_npc$, 2;
+			npcshopattach .shop_npc$, 1;
+			end;
+		case 3:
+		mes "Temporalmente fuera de servicio.";
+		close;
+
+			.@cooldown = 10; // segundos de delay para volver abrir la tienda
+			
+			
+		if ( @enchant_cooldown + .@cooldown > gettimetick(2) ) {
+			dispbottom "Debes esperar " + ( @enchant_cooldown + .@cooldown - gettimetick(2) ) + " segundos para volver a usar este servicio.";
+			close;
+			}
+
+			mes "Selecciona la receta que deseas comprar.";
+			close2;
+			callshop .shop_npc$, 1;
+			npcshopattach .shop_npc$, 1;
+			 @enchant_cooldown = gettimetick(2);
+			end;
+	}
+	
+	close;
+	
+	function	func_Enchantment	{
+		.@enchant_item_id = getarg(0, 0);
+		.@exp_min = getarg(1, 0);
+		.@exp_max = getarg(2, 0);
+		.@required_enchanter_lv = getarg(3, 0);
+		.@getargcount = getargcount() - 4;
+		
+		if (.@enchant_item_id > 0 && .@getargcount > 1) {
+			for (.@i = 4; .@i <= .@getargcount; .@i += 2) {
+				.@array[.@array_size] = getarg(.@i);
+				.@array[.@array_size + 1] = getarg(.@i + 1);
+				.@array_size += 2;
+			}
+			
+			setarray getd(".q_"+.@enchant_item_id+"[0]"), .@exp_min, .@exp_max, .@required_enchanter_lv;
+			copyarray getd(".q_"+.@enchant_item_id+"[3]"), .@array, .@array_size;
+			npcshopadditem .shop_npc$, .@enchant_item_id, 1;
+		}
+		return;
+	}
+	
+	OnInit:
+		// shop npc name
+		.shop_npc$ = "shop_enchanter";
+		npcshopdelitem .shop_npc$, 909;
+
+		
+
+		
+		// exp required for each level
+		setarray .exp,
+			25, 25, 25, 25, 25, 25, 25, 25, 25, 25,
+			50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+			75, 75, 75, 75, 75, 75, 75, 75, 75, 75,
+			120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+			120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+			200, 200, 200, 200, 200, 200, 200, 200, 200, 200,
+			200, 200, 200, 200, 200;
+		.exp_size = getarraysize(.exp);
+		
+		// special items
+		.special_equip_list$ = "13413,13412,1233,1132,1470,1469,1166,1415,1138,1140,1365,1369,1368,1527,1228,1720,1724,1241";
+		
+		freeloop(1);
+		// func_Enchantment(<enchant_item_id>, <min_exp>, <max_exp>, <min_rank_lv>, <item_id_1>, <item_qty_1>,...,<item_id_X>,<item_qty_X>);
+		// Apprentice
+		func_Enchantment(33000, 5, 7, 0, 30008, 10, 30009, 1, 503, 1);
+		func_Enchantment(33001, 5, 7, 0, 30008, 10, 30009, 1, 503, 1);
+		func_Enchantment(33002, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33003, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33004, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33005, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33006, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33007, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33008, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+		func_Enchantment(33009, 5, 7, 0, 30008, 10, 30009, 1, 503, 3);
+
+		// Journeyman
+		func_Enchantment(33010, 4, 8, 10, 30008, 5, 30009, 5, 503, 3);
+		func_Enchantment(33011, 4, 8, 10, 30008, 5, 30009, 5, 503, 3);
+		func_Enchantment(33012, 4, 8, 10, 30008, 5, 30009, 5, 503, 30);
+		func_Enchantment(33013, 4, 8, 10, 30008, 5, 30009, 5, 503, 30);
+		func_Enchantment(33014, 4, 8, 10, 30008, 5, 30009, 5, 503, 30);
+		func_Enchantment(33015, 4, 8, 10, 30008, 5, 30009, 5, 503, 30);
+		func_Enchantment(33016, 4, 8, 10, 30008, 5, 30009, 5, 503, 30);
+
+		// Expert
+		func_Enchantment(33017, 3, 9, 20, 30009, 40, 30008, 2, 503, 1);
+		func_Enchantment(33018, 3, 9, 20, 30009, 40, 30008, 1, 503, 3);
+		func_Enchantment(33019, 3, 9, 20, 30009, 40, 30008, 1, 503, 3);
+		func_Enchantment(33020, 3, 9, 20, 30009, 40, 30008, 1, 503, 3);
+		func_Enchantment(33021, 3, 9, 20, 30009, 40, 30008, 1, 503, 3);
+		func_Enchantment(33022, 3, 9, 20, 30009, 40, 30008, 1, 503, 3);
+
+		// Artisan
+		func_Enchantment(33023, 5, 11, 30, 30009, 45, 30008, 20, 503, 1);
+		func_Enchantment(33024, 5, 11, 30, 30009, 45, 30008, 20, 503, 1);
+		func_Enchantment(33025, 5, 11, 30, 30009, 45, 30008, 20, 503, 3);
+		func_Enchantment(33026, 5, 11, 30, 30009, 45, 30008, 20, 503, 3);
+		func_Enchantment(33027, 5, 11, 30, 30009, 45, 30008, 20, 503, 3);
+		func_Enchantment(33028, 5, 11, 30, 30009, 45, 30008, 20, 503, 3);
+
+		// Master
+		func_Enchantment(33029, 6, 9, 50, 30014, 100, 30009, 100, 503, 100);
+		func_Enchantment(33030, 6, 9, 50, 30014, 100, 30009, 200, 503, 100);
+		func_Enchantment(33031, 6, 9, 50, 30014, 100, 30009, 100, 503, 300);
+		func_Enchantment(33032, 6, 9, 50, 30014, 100, 30009, 100, 503, 300);
+		func_Enchantment(33033, 6, 9, 50, 30014, 100, 30009, 100, 503, 300);
+		func_Enchantment(33034, 6, 9, 50, 30014, 100, 30009, 100, 503, 300);
+		func_Enchantment(33035, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+		func_Enchantment(33036, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+		func_Enchantment(33037, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+		func_Enchantment(33038, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+		func_Enchantment(33039, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+		func_Enchantment(33040, 25, 50, 50, 30014, 500, 30015, 5, 503, 300);
+
+
+		freeloop(0);
+		
+		end;
+		
+	L_GetEnchanterTitle:
+		.@level = getarg(0, 0);
+		
+		if (.@level >= 65) return "Gran Maestro";
+		else if (.@level >= 50) return "Maestro";
+		else if (.@level >= 35) return "Artesano";
+		else if (.@level >= 25) return "Experto";
+		else if (.@level >= 10) return "Oficial";
+		else if (.@level >= 5) return "Aprendiz";
+		else return "Principiante";
+		
+	L_GetEnchanterLevel:
+		while (EXP_ENCHANT > .@required_exp && .exp[.@i] > 0) {
+			.@required_exp += .exp[.@i];
+			.@i++;
+		}
+		return .@i;
+		
+	OnSellItem:
+		.@size = getarraysize(@sold_nameid);
+		.@enchanter_lv = callsub(L_GetEnchanterLevel);
+		.@enchanter_title$ = callsub(L_GetEnchanterTitle, .@enchanter_lv);
+		for (.@i = 0; .@i < .@size; .@i++) {
+			.@weapon_lv = getiteminfo(@sold_nameid[.@i], ITEMINFO_WLV);
+			.@rate = 0;
+			.@itemid_gem = 0;
+			mes .enchant$;
+			mes "> ^21801e"+getitemname(@sold_nameid[.@i])+"^000000";
+			if (compare(","+.special_equip_list$+",", ","+@sold_nameid[.@i]+",")) {
+				.@rate = 80;
+				.@itemid_gem = 30015;
+			}
+			else if (.@weapon_lv == 2) {
+				.@rate = 75;
+				.@itemid_gem = 30008;
+			}
+			else if (.@weapon_lv == 3) {
+				.@rate = 55;
+				.@itemid_gem = 30009;
+			}
+			else if (.@weapon_lv == 4 && (.@enchanter_title$ == "Gran Maestro" || .@enchanter_title$ == "Maestro") ) {
+				.@rate = 50;
+				.@itemid_gem = 30014;
+			}
+			else {
+				
+				mes " La transmutación ha fallado por una de estas razones:";
+				mes (" ");
+				mes " - No puedo quitar escencias en esta clase de armas.";
+				mes " - No tienes el nivel suficiente.";
+				mes " - Es una Arma de Nivel 1.";
+				mes " - No es una Arma.";
+				continue;
+			}
+			mes "  - ^322ddeChance de obtencion: 1%~"+.@rate+"%- ^930c0cEnergia Oculta:^000000 "+getitemname(.@itemid_gem);
+			.@rate = rand(1, .@rate);
+
+			if (.@itemid_gem > 0 && .@rate > 0 && rand(100) <= .@rate) {
+				delitem @sold_nameid[.@i], 1;
+				getitem .@itemid_gem, 1;
+			} else {
+				next;
+				mes .enchant$;
+				mes "^930c0cEsta arma no contenia ninguna escencia.^000000";
+				delitem @sold_nameid[.@i], 1;
+				}
+
+		}
+		close2;
+		npcshopattach .shop_npc$, 0;
+		end;
+		
+	OnBuyItem:
+		.@size = getarraysize(getd(".q_"+@bought_nameid[0]));
+		if (.@size) {
+			copyarray .@array, getd(".q_"+@bought_nameid[0]), .@size;
+			.@enchanter_lv = callsub(L_GetEnchanterLevel);
+			
+			mes "^100c93Item :^000000 " + getitemname(@bought_nameid);
+			mes "^100c93Nivel de Encantador Requerido :^000000" + .@array[2];
+			mes "^100c93Bonus de Experiencia:^000000 "+.@array[0]+" ~ "+.@array[1];
+			mes "^100c93Escencias Requeridas:^000000";
+			for (.@i = 3; .@i <= .@size - 1; .@i += 2) {
+				mes " > "+.@array[.@i+1]+"x "+getitemname(.@array[.@i]);
+				if (countitem(.@array[.@i]) < .@array[.@i+1]) 
+					.@fail++;
+			}
+			next;
+			mes .enchant$;
+			if (.@fail || (.@array[2] > 0 && .@enchanter_lv < .@array[2])) {
+				mes "Lo lamento, no puedes obtener este encantamiento.";
+				mes "No cumples con lo requerido.";
+			}
+			else if (select("Continue", "Cancel") == 1) {
+				for (.@i = 3; .@i <= .@size - 1; .@i += 2)
+					delitem .@array[.@i], .@array[.@i+1];
+				getitem @bought_nameid[0], 1;
+				.@rand_exp = rand(.@array[0], .@array[1]);
+				if (.@rand_exp) {
+					EXP_ENCHANT += .@rand_exp;
+					mes "Has obtenido "+.@rand_exp+" puntos de EXP";
+				}
+			}
+			close2;
+		}
+		npcshopattach .shop_npc$, 0;
+		end;
+		
+
+}
